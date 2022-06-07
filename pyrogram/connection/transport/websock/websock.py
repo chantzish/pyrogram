@@ -116,7 +116,7 @@ class WEBSOCKET:
         while len(data) < length:
             try:
                 chunk = await asyncio.to_thread(self.socket.recv)
-            except (WebSocketException,ProxyError,ProxyTimeoutError,ProxyConnectionError) as e:
+            except (WebSocketException,ProxyError,ProxyTimeoutError,ProxyConnectionError,OSError) as e:
                 log.error(f'{type(e).__name__}: {e}')
                 return None
             except Exception as e:
